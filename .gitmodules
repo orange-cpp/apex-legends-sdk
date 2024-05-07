@@ -1,0 +1,3 @@
+[submodule "extlibs/uml"]
+	path = extlibs/uml
+	url = https://github.com/VladislavAlpatov/uml
