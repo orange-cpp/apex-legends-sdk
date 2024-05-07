@@ -50,4 +50,10 @@ namespace apex_sdk::signatures
     constexpr std::string_view m_iHealth = "44 8B 83 ? ? ? ? 45 85 C0 44 0F 48 C7 41 8B D0 2B 93 ? ? ? ? 85 D2";
     constexpr std::string_view m_iShield = "39 87 ? ? ? ? 0F 84 ? ? ? ? 48 8B 07 48 8B CF FF 90 ? ? ? ? 44 8B 97";
     constexpr std::string_view m_vecAbsVelocity = "F3 0F 10 9F ? ? ? ? F3 0F 10 97 ? ? ? ? F3 0F 59 DB";
+    constexpr std::string_view m_lastVisibleTime = "84 C0 0F 84 ? ? ? ? F3 0F 11 B3 ? ? ? ? E9";
+    constexpr std::string_view m_vecOrigin = "F3 0F 7E 97";
+    constexpr std::string_view m_boneMatrix = "89 81 ? ? ? ? C3 CC 48 89 6C 24"; // + 0x44
+    constexpr std::string_view m_cameraPos = "0F 2E 89 ? ? ? ? 7A 58";
+    constexpr std::string_view m_viewAngles = "F2 0F 10 B6 ? ? ? ? F3 41 0F 58 D3";
+    constexpr std::string_view m_latestPrimaryWeapons = "";
 }
