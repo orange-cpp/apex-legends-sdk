@@ -27,7 +27,7 @@ namespace apex_sdk
     std::optional<BaseEntity> apex_sdk::EntityList::GetEntity(size_t index)
     {
         static auto base = Memory::Get().GetModuleBaseAddressByName("r5apex.exe").value();
-        auto addr = Memory::Get().ReadMemory<uintptr_t>(base+OFFSET_ENTITYLIST+(index << 5));
+        auto addr = Memory::Get().ReadMemory<uintptr_t>(base+OFFSET_ENTITYLIST +( index << 5));
 
         if (!addr.value_or(0))
             return std::nullopt;

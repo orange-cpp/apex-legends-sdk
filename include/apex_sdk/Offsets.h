@@ -4,8 +4,8 @@
 
 #pragma once
 
-#define OFFSET_ENTITYLIST 0x1db2e38 //cl_entitylist
-#define OFFSET_LOCAL_ENT 0x2161538  //LocalPlayer might be moved to AVC_GameMovement
+#define OFFSET_ENTITYLIST 0x1DB4118 //cl_entitylist
+#define OFFSET_LOCAL_ENT 0x2162818  //LocalPlayer might be moved to AVC_GameMovement
 
 
 #define OFFSET_TEAM 0x030c //m_iTeamNum
@@ -30,3 +30,13 @@
 #define OFFSET_WEAPON 0x18f4 //m_latestPrimaryWeapons
 #define OFFSET_BULLET_SPEED (0x1e5c) //CWeaponX!m_flProjectileSpeed maybe its WeaponSettings.projectile_launch_speed now
 #define OFFSET_BULLET_SCALE (0x1e64) //CWeaponX!m_flProjectileScale maybe its WeaponSettings.projectile_gravity_scale now
+
+namespace apex_sdk
+{
+    enum offset : std::ptrdiff_t
+    {
+        entity_list = 0x1DB4118,
+        local_player = 0x2162818,
+        view_projection_matrix = 0x2190c60,
+    };
+}
