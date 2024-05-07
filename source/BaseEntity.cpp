@@ -133,11 +133,8 @@ namespace apex_sdk
         const auto epic = Color::FromRGBA(178, 55, 200, 255);
         const auto mythic = Color::FromRGBA(255, 78, 29, 255);
 
-        if (shieldVal <= 25)
-            return  GetHealthColor().Blend(Color::FromRGBA(255, 255, 255, 255), ratio);
-
         if (shieldVal <= 50)
-            return  Color::FromRGBA(255, 255, 255, 255).Blend(common, ratio);
+            return  common.Blend(Color::FromRGBA(255, 255, 255, 255), ratio);
 
         if (shieldVal <= 75)
             return common.Blend(rare, ratio);
