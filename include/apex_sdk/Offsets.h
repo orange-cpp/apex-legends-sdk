@@ -43,6 +43,7 @@ namespace apex_sdk
 
 namespace apex_sdk::signatures
 {
+    constexpr std::string_view m_pLocalPlayer = "48 8B 05 ? ? ? ? 48 8D 0D ? ? ? ? 44 88 2D"; // + 0x8
     constexpr std::string_view entityList = "48 8D 35 ? ? ? ? 0F 84";
     constexpr std::string_view viewProjectionMatrix = "48 8D 0D ? ? ? ? FF 90 ? ? ? ? 41 8B 04 1F" ; // + 0x10
 
@@ -55,5 +56,9 @@ namespace apex_sdk::signatures
     constexpr std::string_view m_boneMatrix = "89 81 ? ? ? ? C3 CC 48 89 6C 24"; // + 0x44
     constexpr std::string_view m_cameraPos = "0F 2E 89 ? ? ? ? 7A 58";
     constexpr std::string_view m_viewAngles = "F2 0F 10 B6 ? ? ? ? F3 41 0F 58 D3";
-    constexpr std::string_view m_latestPrimaryWeapons = "";
+    constexpr std::string_view m_lifeState = "80 B9 ? ? ? ? ? 75 25 48 8B 05 ? ? ? ? F3 0F 10 48";
+    constexpr std::string_view m_bleedOutState = "39 B8 ? ? ? ? 0F 45 F1 48 8B 03 48 8B CB FF 90";
+    constexpr std::string_view m_latestPrimaryWeapons = "8B 94 81 ? ? ? ? 83 FA FF 74 1D 0F B7 DA 48 8D 05";
+    constexpr std::string_view m_fProjectileBulletSpeed = "80 BB ? ? ? ? ? 75 0E B8 ? ? ? ? 66 39 83 ? ? ? ? 75 37"; // + 0x750
+    constexpr std::string_view m_fProjectileBulletGravityScale = m_fProjectileBulletSpeed; // 0x758;
 }
