@@ -114,4 +114,40 @@ namespace apex_sdk
     {
         return Memory::Get().ReadMemory<int>(m_pHandle+OFFSET_MAXSHIELD).value();
     }
+    uml::color::Color BaseEntity::GetHealthColor() const
+    {
+        using Color = uml::color::Color;
+
+        return Color::Red().Blend(Color::Green(), static_cast<float>(GetHealth()) / 100.f);
+    }
+
+    uml::color::Color BaseEntity::GetShieldColor() const
+    {
+        const auto shieldVal = GetShieldValue();
+        const auto barVal = (shieldVal == 0) ? 0 : (shieldVal % 25 == 0) ? 25 : shieldVal % 25;
+        const float ratio = (float) barVal / (float )25;
+
+        using Color = uml::color::Color;
+        const auto common = Color::FromRGBA(168, 168, 168, 255);
+        const auto rare = Color::FromRGBA(81, 168, 214, 255);
+        const auto epic = Color::FromRGBA(178, 55, 200, 255);
+        const auto mythic = Color::FromRGBA(255, 78, 29, 255);
+
+        if (shieldVal <= 25)
+            return  GetHealthColor().Blend(Color::FromRGBA(255, 255, 255, 255), ratio);
+
+        if (shieldVal <= 50)
+            return  Color::FromRGBA(255, 255, 255, 255).Blend(common, ratio);
+
+        if (shieldVal <= 75)
+            return common.Blend(rare, ratio);
+
+        if (shieldVal <= 100)
+            return rare.Blend(epic, ratio);
+
+        if (shieldVal <= 125)
+            return epic.Blend(mythic, ratio);
+
+        return GetHealthColor();
+    }
 }

@@ -9,6 +9,10 @@
 #include <optional>
 #include <uml/Vector3.h>
 #include "apex_sdk/Weapon.h"
+#include <uml/color.h>
+
+
+
 namespace apex_sdk
 {
     enum BoneIndex : int
@@ -17,6 +21,7 @@ namespace apex_sdk
         Neck = 7,
         Body = 5,
     };
+
     class BaseEntity
     {
     public:
@@ -46,7 +51,8 @@ namespace apex_sdk
         [[nodiscard]] uml::Vector3 GetVelocity() const;
         [[nodiscard]] uml::Vector3 GetBreathAngle() const;
         [[nodiscard]] uml::Vector3 GetAimPunch() const;
-
+        [[nodiscard]] uml::color::Color GetHealthColor() const;
+        [[nodiscard]] uml::color::Color GetShieldColor() const;
         [[nodiscard]] uint32_t GetFlags() const;
         bool operator==(const apex_sdk::BaseEntity& other) const {return m_pHandle == other.m_pHandle;}
     private:
