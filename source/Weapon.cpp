@@ -20,6 +20,6 @@ namespace apex_sdk
 
     float Weapon::GetBulletGravityMultiplier() const
     {
-        return Memory::Get().ReadMemory<float>(m_pHandle+OFFSET_BULLET_SCALE).value();
+        return 1.f / Memory::Get().ReadMemory<float>(m_pHandle+OFFSET_BULLET_SCALE).value();
     }
 } // apex_sdk
