@@ -1,1 +1,2 @@
 add_subdirectory(uml)
+add_subdirectory(memory_manager)

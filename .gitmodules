@@ -1,3 +1,6 @@
 [submodule "extlibs/uml"]
 	path = extlibs/uml
 	url = https://github.com/VladislavAlpatov/uml
+[submodule "extlibs/memory_manager"]
+	path = extlibs/memory_manager
+	url = https://github.com/VladislavAlpatov/memory_manager
