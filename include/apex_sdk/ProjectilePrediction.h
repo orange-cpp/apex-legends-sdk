@@ -3,13 +3,12 @@
 //
 
 #pragma once
-#include "uml/ProjectilePredictor.h"
 #include "uml/Vector3.h"
 #include "apex_sdk/BaseEntity.h"
 
 namespace apex_sdk
 {
-    class ProjectilePrediction : private uml::prediction::ProjectilePredictor
+    class ProjectilePrediction
     {
     public:
         [[nodiscard]]

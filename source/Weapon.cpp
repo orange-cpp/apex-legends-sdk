@@ -17,4 +17,9 @@ namespace apex_sdk
     {
         return Memory::Get().ReadMemory<float>(m_pHandle+OFFSET_BULLET_SCALE).value() * 750.f;
     }
+
+    float Weapon::GetBulletGravityMultiplier() const
+    {
+        return Memory::Get().ReadMemory<float>(m_pHandle+OFFSET_BULLET_SCALE).value();
+    }
 } // apex_sdk

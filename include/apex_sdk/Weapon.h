@@ -15,7 +15,7 @@ namespace apex_sdk
         explicit Weapon(uintptr_t ptr) {m_pHandle = ptr;}
         [[nodiscard]] float GetBulletSpeed() const;
         [[nodiscard]] float GetBulletGravity() const;
-
+        [[nodiscard]] float GetBulletGravityMultiplier() const;
     private:
         uintptr_t m_pHandle = 0;
     };
