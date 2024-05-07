@@ -31,11 +31,11 @@ namespace apex_sdk
     uml::Vector3 BaseEntity::GetBonePosition(int iBone) const
     {
         struct Bone {
-            uint8_t __pad1[0xCC];
+            uint8_t _pad1[0xCC];
             float x;
-            uint8_t __pad2[0xC];
+            uint8_t _pad2[0xC];
             float y;
-            uint8_t __pad3[0xC];
+            uint8_t _pad3[0xC];
             float z;
         };
         auto pBoneMatrix = Memory::Get().ReadMemory<uintptr_t>(m_pHandle + OFFSET_BONES).value();
@@ -63,7 +63,7 @@ namespace apex_sdk
 
     void BaseEntity::SetViewAngles(const uml::Vector3 &other)
     {
-        if (other.x > 89 or other.x < -89 or other.y > 180 or other.y < -180)
+        if (std::abs(other.x) > 89 || std::abs(other.y) > 180)
             return;
 
         Memory::Get().WriteMemory<uml::Vector3>(m_pHandle + OFFSET_VIEWANGLES, other);
@@ -100,7 +100,7 @@ namespace apex_sdk
         return Memory::Get().ReadMemory<uml::Vector3>(m_pHandle+OFFSET_ABS_VELOCITY).value();
     }
 
-    int BaseEntity::GetFlags() const
+    uint32_t BaseEntity::GetFlags() const
     {
         return Memory::Get().ReadMemory<int>(m_pHandle+0xc8).value();;
     }
