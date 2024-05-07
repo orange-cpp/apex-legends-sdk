@@ -9,6 +9,6 @@
 
 namespace apex_sdk
 {
-    uml::matrix GetViewProjectionMatrix();
+    const uml::matrix& GetViewProjectionMatrix();
     std::optional<uml::Vector3> WorldToScreen(uml::Vector3 worldPosition, float width, float height);
 }

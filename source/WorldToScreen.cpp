@@ -25,15 +25,21 @@ namespace apex_sdk
         return {final};
     }
 
-    uml::matrix GetViewProjectionMatrix()
+
+    const uml::matrix& GetViewProjectionMatrix()
     {
         static const auto& mm = Memory::Get();
         static const auto base = mm.GetModuleBaseAddressByName("r5apex.exe").value();
 
-        const std::vector<uint8_t> raw =  mm.ReadMemory(base+offset::view_projection_matrix, 64);
+        static uml::matrix matrix(4,4);
 
+        struct rawMatrix
+        {
+            float data[16];
+        };
 
+        matrix.set_from_raw(mm.ReadMemory<rawMatrix>(base+offset::view_projection_matrix)->data);
 
-        return {4,4, (float*)raw.data()};
+        return matrix;
     }
 }
