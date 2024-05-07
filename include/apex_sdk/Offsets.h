@@ -40,3 +40,12 @@ namespace apex_sdk
         view_projection_matrix = 0x2190c60,
     };
 }
+
+namespace apex_sdk::signatures
+{
+    constexpr std::string_view m_iHealth = "44 8B 83 ? ? ? ? 45 85 C0 44 0F 48 C7 41 8B D0 2B 93 ? ? ? ? 85 D2";
+    constexpr std::string_view m_iTeamNumber = "8B 87 ? ? ? ? 89 87 ? ? ? ? 33 C0 8B 15";
+    constexpr std::string_view entityList = "48 8D 35 ? ? ? ? 0F 84";
+    constexpr std::string_view viewProjectionMatrix = "48 8D 0D ? ? ? ? FF 90 ? ? ? ? 41 8B 04 1F" ; // + 0x10
+
+}
