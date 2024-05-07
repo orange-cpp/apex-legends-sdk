@@ -4,8 +4,8 @@
 
 #pragma once
 
-#define OFFSET_ENTITYLIST 0x1db73e8 //cl_entitylist
-#define OFFSET_LOCAL_ENT 0x2165e48 //LocalPlayer might be moved to AVC_GameMovement
+#define OFFSET_ENTITYLIST 0x1dd45f8 //cl_entitylist
+#define OFFSET_LOCAL_ENT 0x21830f8 //LocalPlayer might be moved to AVC_GameMovement
 
 //Glow ESP
 #define OFFSET_TEAM 0x0328 //m_iTeamNum
@@ -15,22 +15,22 @@
 
 #define OFFSET_ABS_VELOCITY 0x0170 //m_vecAbsVelocity
 #define OFFSET_LIFE_STATE 0x0680 //m_lifeState, >0 = dead
-#define OFFSET_BLEED_OUT_STATE 0x26c0 //m_bleedoutState, >0 = knocked
+#define OFFSET_BLEED_OUT_STATE 0x26e0 //m_bleedoutState, >0 = knocked
 
 
 #define OFFSET_ORIGIN 0x017c //m_vecAbsOrigin - 3rd offset after the first int and vector
-#define OFFSET_BONES 0x0d80 + 0x48 //m_nForceBone + 0x48
-#define OFFSET_CAMERAPOS 0x1eb0 //CPlayer!camera_origin
-#define OFFSET_VIEWANGLES 0x2514 - 0x14 //m_ammoPoolCapacity - 0x14
+#define OFFSET_BONES 0x0da0 + 0x48 //m_nForceBone + 0x48
+#define OFFSET_CAMERAPOS 0x1ed0 //CPlayer!camera_origin
+#define OFFSET_VIEWANGLES 0x2534-0x14  //m_ammoPoolCapacity - 0x14
 #define OFFSET_BREATH_ANGLES OFFSET_VIEWANGLES - 0x10
 
-#define OFFSET_WEAPON 0x1914 //m_latestPrimaryWeapons
-#define OFFSET_BULLET_SPEED 0x1e7c //CWeaponX!m_flProjectileSpeed maybe its WeaponSettings.projectile_launch_speed now  // 0x04ec + 0x1998 ?
-#define OFFSET_BULLET_SCALE 0x1e84 //CWeaponX!m_flProjectileScale maybe its WeaponSettings.projectile_gravity_scale now // Might need to add 0x19e0 +  ?? 0x04e4 + 0x1998
+#define OFFSET_WEAPON 0x1934 //m_latestPrimaryWeapons
+#define OFFSET_BULLET_SPEED 0x04e4 + 0x19c0  //CWeaponX!m_flProjectileSpeed maybe its WeaponSettings.projectile_launch_speed now  // 0x04ec + 0x1998 ?
+#define OFFSET_BULLET_SCALE 0x04ec + 0x19c0 //CWeaponX!m_flProjectileScale maybe its WeaponSettings.projectile_gravity_scale now // Might need to add 0x19e0 +  ?? 0x04e4 + 0x1998
 
 
 
-#define OFFSET_VISIBLE_TIME 0x1970 //CPlayer!lastVisibleTime   // 0x3?
+#define OFFSET_VISIBLE_TIME 0x1990 //CPlayer!lastVisibleTime   // 0x3?
 
 namespace apex_sdk
 {
@@ -38,7 +38,7 @@ namespace apex_sdk
     {
         entity_list = 0x1DB73E8,
         local_player = 0x2165E48,
-        view_projection_matrix = 0x2194290,
+        view_projection_matrix = 0x21B1540,
         m_iHealth = 0x318,
         m_iShields = 0x1A0,
         m_iShieldsMax = 0x1A4,
@@ -61,7 +61,7 @@ namespace apex_sdk::signatures
 {
     constexpr std::string_view m_pLocalPlayer = "48 8B 05 ? ? ? ? 48 8D 0D ? ? ? ? 44 88 2D"; // + 0x8
     constexpr std::string_view entityList = "48 8D 35 ? ? ? ? 0F 84";
-    constexpr std::string_view viewProjectionMatrix = "48 8D 0D ? ? ? ? FF 90 ? ? ? ? 41 8B 04 1F" ; // + 0x10
+    constexpr std::string_view viewProjectionMatrix = "48 8D 0D ? ? ? ? FF 90 ? ? ? ? 41 8B" ; // + 0x10
 
     constexpr std::string_view m_iTeamNumber = "8B 87 ? ? ? ? 89 87 ? ? ? ? 33 C0 8B 15";
     constexpr std::string_view m_iHealth = "44 8B 83 ? ? ? ? 45 85 C0 44 0F 48 C7 41 8B D0 2B 93 ? ? ? ? 85 D2";
