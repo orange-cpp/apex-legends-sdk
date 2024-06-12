@@ -3,14 +3,14 @@
 //
 
 #include "apex_sdk/ProjectilePrediction.h"
-#include "uml/ProjectilePredictor.h"
+#include "uml/prediction/Engine.h"
 
 std::optional<uml::Vector3>
 apex_sdk::ProjectilePrediction::CalculateViewAngles(const apex_sdk::BaseEntity &local,
                                                     const apex_sdk::BaseEntity &target) {
 
 
-    const auto predEngine = uml::prediction::ProjectilePredictor(750.f, 5, 0.00001f);
+    const auto predEngine = uml::prediction::Engine(750.f, 0.00001f, 5.f, 5.f);
 
     const auto weapon = local.GetActiveWeapon();
 
@@ -20,15 +20,15 @@ apex_sdk::ProjectilePrediction::CalculateViewAngles(const apex_sdk::BaseEntity &
     uml::prediction::Target predtarget
     {
         .m_origin = target.GetBonePosition(5),
-        .m_vecVelocity = target.GetVelocity(),
-        .m_IsAirborne = target.IsAirborne()
+        .m_velocity = target.GetVelocity(),
+        .m_isAirborne = target.IsAirborne()
     };
     uml::prediction::Projectile projectile
     {
         .m_origin = local.GetCameraPosition(),
-        .m_velocity = weapon->GetBulletSpeed(),
-        .m_gravityMultiplier   = weapon->GetBulletGravityMultiplier()
+        .m_launchSpeed = weapon->GetBulletSpeed(),
+        .m_gravityScale   = weapon->GetBulletGravityMultiplier()
     };
 
-    return predEngine.PredictPointToAim(predtarget, projectile);
+    return predEngine.MaybeCalculateAimPoint(projectile, predtarget);
 }
