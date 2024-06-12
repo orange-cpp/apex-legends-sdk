@@ -10,7 +10,7 @@ apex_sdk::ProjectilePrediction::CalculateViewAngles(const apex_sdk::BaseEntity &
                                                     const apex_sdk::BaseEntity &target) {
 
 
-    const auto predEngine = uml::prediction::ProjectilePredictor(750.f, 5, 0.0005f);
+    const auto predEngine = uml::prediction::ProjectilePredictor(750.f, 5, 0.00001f);
 
     const auto weapon = local.GetActiveWeapon();
 
@@ -21,7 +21,7 @@ apex_sdk::ProjectilePrediction::CalculateViewAngles(const apex_sdk::BaseEntity &
     {
         .m_origin = target.GetBonePosition(5),
         .m_vecVelocity = target.GetVelocity(),
-        .m_IsAirborne = !(target.GetFlags() &1)
+        .m_IsAirborne = target.IsAirborne()
     };
     uml::prediction::Projectile projectile
     {

@@ -43,6 +43,9 @@ namespace apex_sdk
 
         [[nodiscard]] bool IsAlive() const;
 
+        [[nodiscard]] bool IsAirborne() const;
+
+
         [[nodiscard]] bool IsKnockedout() const;
         void SetViewAngles(const uml::Vector3 & other);
         [[nodiscard]] uml::Vector3 GetBonePosition(int iBone) const;

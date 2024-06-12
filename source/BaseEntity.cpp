@@ -147,4 +147,10 @@ namespace apex_sdk
 
         return GetHealthColor();
     }
+
+    bool BaseEntity::IsAirborne() const
+    {
+        constexpr uint32_t isOnGroundFlag = 1;
+        return !(GetFlags() & isOnGroundFlag);
+    }
 }

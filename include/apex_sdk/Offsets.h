@@ -4,8 +4,8 @@
 
 #pragma once
 
-#define OFFSET_ENTITYLIST 0x1dd45f8 //cl_entitylist
-#define OFFSET_LOCAL_ENT 0x21830f8 //LocalPlayer might be moved to AVC_GameMovement
+#define OFFSET_ENTITYLIST 0x1eabd08 //cl_entitylist
+#define OFFSET_LOCAL_ENT 0x225a8a8 //LocalPlayer might be moved to AVC_GameMovement
 
 //Glow ESP
 #define OFFSET_TEAM 0x0328 //m_iTeamNum
@@ -25,8 +25,8 @@
 #define OFFSET_BREATH_ANGLES OFFSET_VIEWANGLES - 0x10
 
 #define OFFSET_WEAPON 0x1934 //m_latestPrimaryWeapons
-#define OFFSET_BULLET_SPEED 0x04e4 + 0x19c0  //CWeaponX!m_flProjectileSpeed maybe its WeaponSettings.projectile_launch_speed now  // 0x04ec + 0x1998 ?
-#define OFFSET_BULLET_SCALE 0x04ec + 0x19c0 //CWeaponX!m_flProjectileScale maybe its WeaponSettings.projectile_gravity_scale now // Might need to add 0x19e0 +  ?? 0x04e4 + 0x1998
+#define OFFSET_BULLET_SPEED 0x1ea4 //CWeaponX!m_flProjectileSpeed maybe its WeaponSettings.projectile_launch_speed now  // 0x04ec + 0x1998 ?
+#define OFFSET_BULLET_SCALE 0x1eac //CWeaponX!m_flProjectileScale maybe its WeaponSettings.projectile_gravity_scale now // Might need to add 0x19e0 +  ?? 0x04e4 + 0x1998
 
 
 
@@ -38,7 +38,7 @@ namespace apex_sdk
     {
         entity_list = 0x1DB73E8,
         local_player = 0x2165E48,
-        view_projection_matrix = 0x21B1540,
+        view_projection_matrix = 0x2288cf0,
         m_iHealth = 0x318,
         m_iShields = 0x1A0,
         m_iShieldsMax = 0x1A4,
