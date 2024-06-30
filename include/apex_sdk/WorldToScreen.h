@@ -3,12 +3,12 @@
 //
 
 #pragma once
-#include "uml/Vector3.h"
-#include "uml/matrix.h"
+#include "omath/Vector3.h"
+#include "omath/matrix.h"
 #include <optional>
 
 namespace apex_sdk
 {
-    const uml::matrix& GetViewProjectionMatrix();
-    std::optional<uml::Vector3> WorldToScreen(uml::Vector3 worldPosition, float width, float height);
+    const omath::matrix& GetViewProjectionMatrix();
+    std::optional<omath::Vector3> WorldToScreen(omath::Vector3 worldPosition, float width, float height);
 }

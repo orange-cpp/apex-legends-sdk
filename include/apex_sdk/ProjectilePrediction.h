@@ -3,7 +3,7 @@
 //
 
 #pragma once
-#include "uml/Vector3.h"
+#include "omath/Vector3.h"
 #include "apex_sdk/BaseEntity.h"
 
 namespace apex_sdk
@@ -12,7 +12,7 @@ namespace apex_sdk
     {
     public:
         [[nodiscard]]
-        static std::optional<uml::Vector3> CalculateViewAngles(const BaseEntity& local,
+        static std::optional<omath::Vector3> CalculateViewAngles(const BaseEntity& local,
                                                                const BaseEntity& target);
 
     };

@@ -9,5 +9,4 @@ add_subdirectory(source)
 target_include_directories(apex-sdk PUBLIC include)
 target_compile_options(apex-sdk PRIVATE -Werror -Wall -Wextra -pedantic-errors)
 
-target_link_libraries(apex-sdk PUBLIC uml)
-target_link_libraries(apex-sdk PUBLIC memory-manager)
+target_link_libraries(apex-sdk PUBLIC omath memory-manager)

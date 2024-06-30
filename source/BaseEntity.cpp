@@ -18,9 +18,9 @@ namespace apex_sdk
         return Memory::Get().ReadMemory<int>(m_pHandle+OFFSET_SHIELD).value();
     }
 
-    uml::Vector3 BaseEntity::GetOrigin() const
+    omath::Vector3 BaseEntity::GetOrigin() const
     {
-        return Memory::Get().ReadMemory<uml::Vector3>(m_pHandle+OFFSET_ORIGIN).value();
+        return Memory::Get().ReadMemory<omath::Vector3>(m_pHandle+OFFSET_ORIGIN).value();
     }
 
     float BaseEntity::LastVisibleTime() const
@@ -28,7 +28,7 @@ namespace apex_sdk
         return Memory::Get().ReadMemory<float>(m_pHandle+OFFSET_VISIBLE_TIME).value();
     }
 
-    uml::Vector3 BaseEntity::GetBonePosition(int iBone) const
+    omath::Vector3 BaseEntity::GetBonePosition(int iBone) const
     {
         struct Bone {
             uint8_t _pad1[0xCC];
@@ -41,7 +41,7 @@ namespace apex_sdk
         auto pBoneMatrix = Memory::Get().ReadMemory<uintptr_t>(m_pHandle + OFFSET_BONES).value();
         const auto bone =  Memory::Get().ReadMemory<Bone>(pBoneMatrix + iBone * 0x30);
 
-        return GetOrigin() + uml::Vector3{bone->x, bone->y, bone->z};
+        return GetOrigin() + omath::Vector3{bone->x, bone->y, bone->z};
     }
 
     int BaseEntity::GetTeamNumber() const
@@ -61,22 +61,22 @@ namespace apex_sdk
         return Memory::Get().ReadMemory<bool>(m_pHandle + OFFSET_BLEED_OUT_STATE).value();
     }
 
-    void BaseEntity::SetViewAngles(const uml::Vector3 &other)
+    void BaseEntity::SetViewAngles(const omath::Vector3 &other)
     {
         if (std::abs(other.x) > 89 || std::abs(other.y) > 180)
             return;
 
-        Memory::Get().WriteMemory<uml::Vector3>(m_pHandle + OFFSET_VIEWANGLES, other);
+        Memory::Get().WriteMemory<omath::Vector3>(m_pHandle + OFFSET_VIEWANGLES, other);
     }
 
-    uml::Vector3 BaseEntity::GetCameraPosition() const
+    omath::Vector3 BaseEntity::GetCameraPosition() const
     {
-        return Memory::Get().ReadMemory<uml::Vector3>(m_pHandle + OFFSET_CAMERAPOS).value();
+        return Memory::Get().ReadMemory<omath::Vector3>(m_pHandle + OFFSET_CAMERAPOS).value();
     }
 
-    uml::Vector3 BaseEntity::GetViewAngles() const
+    omath::Vector3 BaseEntity::GetViewAngles() const
     {
-        return Memory::Get().ReadMemory<uml::Vector3>(m_pHandle + OFFSET_VIEWANGLES).value();
+        return Memory::Get().ReadMemory<omath::Vector3>(m_pHandle + OFFSET_VIEWANGLES).value();
     }
 
     std::optional<Weapon> BaseEntity::GetActiveWeapon() const
@@ -95,9 +95,9 @@ namespace apex_sdk
         return Memory::Get().ReadMemory<uintptr_t>(m_pHandle).value();
     }
 
-    uml::Vector3 BaseEntity::GetVelocity() const
+    omath::Vector3 BaseEntity::GetVelocity() const
     {
-        return Memory::Get().ReadMemory<uml::Vector3>(m_pHandle+OFFSET_ABS_VELOCITY).value();
+        return Memory::Get().ReadMemory<omath::Vector3>(m_pHandle+OFFSET_ABS_VELOCITY).value();
     }
 
     uint32_t BaseEntity::GetFlags() const
@@ -105,29 +105,29 @@ namespace apex_sdk
         return Memory::Get().ReadMemory<int>(m_pHandle+0xc8).value();;
     }
 
-    uml::Vector3 BaseEntity::GetBreathAngle() const
+    omath::Vector3 BaseEntity::GetBreathAngle() const
     {
-        return Memory::Get().ReadMemory<uml::Vector3>(m_pHandle+OFFSET_BREATH_ANGLES).value();
+        return Memory::Get().ReadMemory<omath::Vector3>(m_pHandle+OFFSET_BREATH_ANGLES).value();
     }
 
     int BaseEntity::GetMaxShieldValue() const
     {
         return Memory::Get().ReadMemory<int>(m_pHandle+OFFSET_MAXSHIELD).value();
     }
-    uml::color::Color BaseEntity::GetHealthColor() const
+    omath::color::Color BaseEntity::GetHealthColor() const
     {
-        using Color = uml::color::Color;
+        using Color = omath::color::Color;
 
         return Color::Red().Blend(Color::Green(), static_cast<float>(GetHealth()) / 100.f);
     }
 
-    uml::color::Color BaseEntity::GetShieldColor() const
+    omath::color::Color BaseEntity::GetShieldColor() const
     {
         const auto shieldVal = GetShieldValue();
         const auto barVal = (shieldVal == 0) ? 0 : (shieldVal % 25 == 0) ? 25 : shieldVal % 25;
         const float ratio = (float) barVal / (float )25;
 
-        using Color = uml::color::Color;
+        using Color = omath::color::Color;
         const auto common = Color::FromRGBA(168, 168, 168, 255);
         const auto rare = Color::FromRGBA(81, 168, 214, 255);
         const auto epic = Color::FromRGBA(178, 55, 200, 255);

@@ -1,2 +1,2 @@
-add_subdirectory(uml)
+add_subdirectory(omath)
 add_subdirectory(memory_manager)
