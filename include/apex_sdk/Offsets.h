@@ -4,33 +4,33 @@
 
 #pragma once
 
-#define OFFSET_ENTITYLIST 0x1eabd08 //cl_entitylist
-#define OFFSET_LOCAL_ENT 0x225a8a8 //LocalPlayer might be moved to AVC_GameMovement
+#define OFFSET_ENTITYLIST 0x1ef7c38 //cl_entitylist
+#define OFFSET_LOCAL_ENT 0x22b0328 //LocalPlayer might be moved to AVC_GameMovement
 
 //Glow ESP
-#define OFFSET_TEAM 0x0328 //m_iTeamNum
-#define OFFSET_HEALTH 0x0318 //m_iHealth
+#define OFFSET_TEAM 0x0338 //m_iTeamNum
+#define OFFSET_HEALTH 0x0328 //m_iHealth
 #define OFFSET_SHIELD 0x01a0 //m_shieldHealth
 #define OFFSET_MAXSHIELD 0x01a4 //m_shieldHealthMax
 
 #define OFFSET_ABS_VELOCITY 0x0170 //m_vecAbsVelocity
-#define OFFSET_LIFE_STATE 0x0680 //m_lifeState, >0 = dead
-#define OFFSET_BLEED_OUT_STATE 0x26e0 //m_bleedoutState, >0 = knocked
+#define OFFSET_LIFE_STATE 0x0690 //m_lifeState, >0 = dead
+#define OFFSET_BLEED_OUT_STATE 0x2770 //m_bleedoutState, >0 = knocked
 
 
 #define OFFSET_ORIGIN 0x017c //m_vecAbsOrigin - 3rd offset after the first int and vector
-#define OFFSET_BONES 0x0da0 + 0x48 //m_nForceBone + 0x48
-#define OFFSET_CAMERAPOS 0x1ed0 //CPlayer!camera_origin
-#define OFFSET_VIEWANGLES 0x2534-0x14  //m_ammoPoolCapacity - 0x14
-#define OFFSET_BREATH_ANGLES OFFSET_VIEWANGLES - 0x10
+#define OFFSET_BONES (0x0db0 + 0x48) //m_nForceBone + 0x48
+#define OFFSET_CAMERAPOS 0x1ee0 //CPlayer!camera_origin
+#define OFFSET_VIEWANGLES (0x2544 - 0x14)  //m_ammoPoolCapacity - 0x14
+#define OFFSET_BREATH_ANGLES (OFFSET_VIEWANGLES - 0x10)
 
-#define OFFSET_WEAPON 0x1934 //m_latestPrimaryWeapons
-#define OFFSET_BULLET_SPEED 0x1ea4 //CWeaponX!m_flProjectileSpeed maybe its WeaponSettings.projectile_launch_speed now  // 0x04ec + 0x1998 ?
-#define OFFSET_BULLET_SCALE 0x1eac //CWeaponX!m_flProjectileScale maybe its WeaponSettings.projectile_gravity_scale now // Might need to add 0x19e0 +  ?? 0x04e4 + 0x1998
+#define OFFSET_WEAPON 0x1944 //m_latestPrimaryWeapons
+#define OFFSET_BULLET_SPEED 0x04e4 + 0x19d0 //CWeaponX!m_flProjectileSpeed maybe its WeaponSettings.projectile_launch_speed now  // 0x04ec + 0x1998 ?
+#define OFFSET_BULLET_SCALE 0x04ec + 0x19d0 //CWeaponX!m_flProjectileScale maybe its WeaponSettings.projectile_gravity_scale now // Might need to add 0x19e0 +  ?? 0x04e4 + 0x1998
 
 
 
-#define OFFSET_VISIBLE_TIME 0x1990 //CPlayer!lastVisibleTime   // 0x3?
+#define OFFSET_VISIBLE_TIME 0x19a0 //CPlayer!lastVisibleTime   // 0x3?
 
 namespace apex_sdk
 {
@@ -38,7 +38,7 @@ namespace apex_sdk
     {
         entity_list = 0x1DB73E8,
         local_player = 0x2165E48,
-        view_projection_matrix = 0x2288cf0,
+        view_projection_matrix = 0x22dde50,
         m_iHealth = 0x318,
         m_iShields = 0x1A0,
         m_iShieldsMax = 0x1A4,
